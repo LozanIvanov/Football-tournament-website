@@ -1,0 +1,10 @@
+.navbar-text{
+
+    background-image: url('images/header/header3.jpg');
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent;
+    background-size: cover;
+    background-position: bottom;
+    letter-spacing: 6px;
+}
