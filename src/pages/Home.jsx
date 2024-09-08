@@ -1,5 +1,6 @@
 import React from "react";
 import withMainLayout from "../layout/withMainLayout";
+import Table from "../components/Table";
 
 const style={
     background:{
@@ -15,7 +16,7 @@ const style={
  function HomePage(){
     return(
         <div style={style.background}>
-            
+                 
             <button className="btn btn-primary ms-2">save button</button>
         </div>
     )
