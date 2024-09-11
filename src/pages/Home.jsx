@@ -4,11 +4,12 @@ import Table from "../components/Table";
 
 const style={
     background:{
-         backgroundImage: "url('/images/header/stadium4.jpg')",
+         backgroundImage: "url('/images/staduim/3.jpg')",
          height: '100vh',
          backgroundSize:'cover',
          backgroundPosition:'center',
-         objectFit:'cover'
+         objectFit:'cover',
+         
 
     }
 }
@@ -17,7 +18,6 @@ const style={
     return(
         <div style={style.background}>
                  
-            <button className="btn btn-primary ms-2">save button</button>
         </div>
     )
 }

@@ -1,17 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Sidebar() {
+export default function SidebarPage() {
 
     const Menu_Link = [
         { link: '/', title: "Home" },
-        { link: '/germany', title: "Germany" },
-        { link: '/england', title: "England" },
-        { link: '/spain', title: "Spain" },
-        { link: '/poland', title: "Poland" },
-        { link: '/denmark', title: "Denmark" },
-        { link: '/serbia', title: "Serbia" },
-        { link: '/norway', title: "Norway" },
+        { link: '/players', title: "Players" },
+        { link: '/matches', title: "Matches" },
+        { link: '/germany', title: "Back" },
+
     ]
 
     return (
@@ -21,11 +18,11 @@ export default function Sidebar() {
                     <ul className="nav flex-column text-center">
 
                         {Menu_Link.map(i =>
-                            <li className="nav-item  fs-5 text-start" key={i.link} style={{ textAlign: "center" }}>
+                            <li className="nav-item fs-5 text-start">
                                 <Link className="nav-link text-info fw-bold" to={i.link}>{i.title}</Link>
-                            </li>  
-                                
-                                )}
+                            </li>
+                        )}
+
                     </ul>
                 </div>
             </div>

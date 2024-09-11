@@ -1,0 +1,14 @@
+.card-m{
+     width:230px;
+     margin-bottom: 20px;
+     text-align: center;
+     padding-bottom: 20px;
+     background-color: aqua;
+     font-weight: bold;
+}
+.card-p{
+ display: flex;
+ justify-content: space-around;
+ padding-top:20px;
+ padding-bottom: 10px;
+}
