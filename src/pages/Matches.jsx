@@ -48,7 +48,7 @@ function Matches() {
 
         return matches.filter(match => match.ATeamID === teamID || match.BTeamID === teamID);
     }
-    
+
     function getFlagById(teamId) {
         const flag = flags.find(x => x.id === parseInt(teamId));
         return flag ? flag.imgPath : './images/flag/def.png ';
@@ -109,10 +109,13 @@ function Matches() {
 
                         <h1 className="text-center mb-4">Group A </h1>
                         {numberOfCards >= 3 && (
-                            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-around',
+                            flexDirection:window.innerWidth <=576 ? 'column':'row',
+                            alignItems:'center'
+                            }}>
 
                                 {matchesForTeam1.slice(0, 3).map((match) => (
-                                    <div className="card-m"  >
+                                    <div className=" col-lg-3 col-md-4 col-10 mb-3 card-m"  >
                                         <div className="card-p">
 
                                             <p style={{ color: 'red' }}> {TeamId(match.ATeamID)}</p>
@@ -128,7 +131,7 @@ function Matches() {
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                             <h1 className="text-center mb-4">Semi-Finals </h1>
                             {matchesForTeam1.slice(3).map((match, index) => (
-                                <div className="card-m" style={{marginBottom:'40px'}} >
+                                <div className=" col-lg-3 col-md-4 col-10 mb-3 card-m" style={{marginBottom:'40px'}} >
                                     <div className="card-p" >
 
                                         <p style={{ color: 'red' }}> {TeamId(match.ATeamID)}</p>

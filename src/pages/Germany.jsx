@@ -94,7 +94,7 @@ function Germany() {
         <>
             <div className="row" style={{ display: 'flex', boxSizing: 'border-box', height: '100%' }}>
             
-                <div className="col-7" style={style.background} >
+                <div className="col-lg-7 col-md-6 col-12 mb-4 " style={style.background} >
 
                     <div style={{ width: '80px', height: '20px', fontSize: '10px' }} >
 
@@ -136,7 +136,7 @@ function Germany() {
                     </div>
 
                 </div>
-                <div className="col-5">
+                <div className="col-lg-5 col-md-6 col-12">
                     <div style={{marginLeft:'-12px',  width: '100%', height: '100%', fontSize: '30px', background: 'red', fontSize: '50px',
                      fontWeight: 'bold'  }}>
                         <div style={{ fontSize: '50px', textAlign: "center", padding: '20px' }}>

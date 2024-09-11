@@ -81,7 +81,7 @@ function Players() {
         <>
             <div className="row" style={{ display: 'flex', boxSizing: 'border-box', height: '100%' }}>
     
-                <div className="col-12" style={style.background} >
+                <div className="col-lg-12 col-md-10 col-12  mx-auto" style={style.background} >
                    <div style={{width:'90%', display:'flex',justifyContent:'center',textAlign:'center',fontSize:'10px' }}>
                    <Table columns={["Full Name","Position","Team Number"]}
                    values={players}
