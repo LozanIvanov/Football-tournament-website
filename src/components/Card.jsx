@@ -3,7 +3,7 @@ import React from "react";
 export default function Card({ title, position, age, bgColor = "bg-primary" }){
 return (
     <>
-        <div className="card " >
+        <div className="card " style={{width:'85px'}} >
             <div style={{  height: '30px', width: '50px', overflow: 'hidden' }}>
             <img src="../images/football.jpg" className="card-img-top img-fluid" alt="..." style={{ 
                             height: '100%', 
@@ -16,7 +16,7 @@ return (
                         }} />
                     </div> 
                 <div className={`card-body p-1 ${bgColor}`}>
-                    <p>{title}</p>
+                    <p style={{textAlign:'center'}}>{title}</p>
                     <p className="card-text">{age}-{position}</p>
                     
                 </div>

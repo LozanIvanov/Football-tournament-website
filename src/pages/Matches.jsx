@@ -36,12 +36,12 @@ function Matches() {
     const [matches, setMatches] = useState([]);
     const [teams, setTeams] = useState([]);
 
+
     function TeamId(id) {
-
+          console.log(id)
         const team = teams.find(x => x.ID === id);
-        const teamName = team.Name;
-
-        return teamName;
+        
+        return team.Name;
     }
 
     function getMatchesByTeamID(teamID) {
@@ -92,10 +92,10 @@ function Matches() {
                         }, {});
                     });
 
+                 console.log(Teams)
+                setTeams(Teams);
 
-                setTeams(Teams)
-
-            })
+            });
     }, []);
 
     const matchesForTeam1 = getMatchesByTeamID('1');
