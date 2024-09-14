@@ -7,7 +7,7 @@ export default function SidebarPage() {
         { link: '/', title: "Home" },
         { link: '/players', title: "Players" },
         { link: '/matches', title: "Matches" },
-        { link: '/germany', title: "Back" },
+        { link: '/Teams', title: "Back" },
 
     ]
 

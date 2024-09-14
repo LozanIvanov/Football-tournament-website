@@ -16,8 +16,8 @@ return (
                         }} />
                     </div> 
                 <div className={`card-body p-1 ${bgColor}`}>
-                    <p style={{textAlign:'center'}}>{title}</p>
-                    <p className="card-text">{age}-{position}</p>
+                    <p style={{textAlign:'center',fontWeight:"bold"}}>{title}</p>
+                    <p className="card-text text-center fw-bold">{position}</p>
                     
                 </div>
         </div>
