@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import React from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/Home';
 import CountryPage from './pages/Teams';
 import Players from './pages/Players';
 import Matches from './pages/Matches';
+import { useState } from 'react'
 
 function App() {
 

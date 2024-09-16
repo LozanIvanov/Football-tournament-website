@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import withMainLayoutPage from "../layout/withMainLayoutPage";
 import Card from "../components/Card";
 import { useParams } from "react-router-dom";
-import SidebarPage from "../components/SideBarPage";
+
 
 
 function CountryPage() {
