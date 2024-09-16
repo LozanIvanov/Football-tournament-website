@@ -2,9 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import Header from "../components/Header";
 import SidebarPage from "../components/SideBarPage";
 
-export default function withMainLayoutPage(Component) {
+export default function withMainLayoutPage(WrappedComponent) {
 
-    function layout(props) {
+    function layoutWrapper(props) {
         const [contentHeight, setContentHeight] = useState('100vh');
         const headerRef = useRef(null);
 
@@ -31,11 +31,11 @@ export default function withMainLayoutPage(Component) {
                         <Header />
                     </div>
                     <div className="row">
-                        <div className="col-2 col-lg-2 p-0 m-0  " style={{height: contentHeight, overflow: 'hidden' }}>
-                            <SidebarPage/>
+                        <div className="col-2 col-lg-2 p-0 m-0  " style={{ height: contentHeight, overflow: 'hidden' }}>
+                            <SidebarPage />
                         </div>
-                        <div  className="col-9 col-lg-10 p-0 m-0" style={{ height: contentHeight, overflow: 'hidden' }}>
-                            <Component {...props} />
+                        <div className="col-9 col-lg-10 p-0 m-0" style={{ height: contentHeight, overflow: 'hidden' }}>
+                            <WrappedComponent {...props} />
                         </div>
                     </div>
                 </div>
@@ -43,5 +43,5 @@ export default function withMainLayoutPage(Component) {
             </>
         )
     }
-    return layout;
+    return layoutWrapper;
 }

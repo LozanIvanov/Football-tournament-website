@@ -1,12 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function SidebarPage() {
+
+    const { country } =useParams();
 
     const Menu_Link = [
         { link: '/', title: "Home" },
         { link: '/players', title: "Players" },
-        { link: '/matches', title: "Matches" },
+        { link: `/matches/${country}`, title: "Matches" },
         { link: '/Teams', title: "Back" },
 
     ]

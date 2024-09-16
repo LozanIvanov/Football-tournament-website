@@ -15,7 +15,7 @@ function App() {
         <Route path='/' exact element={<HomePage/>} />
         <Route path='/:country'  element={< CountryPage/> } />
         <Route path='/players'  element={<Players/>} />
-        <Route path='/matches'  element={<Matches/>} />
+        <Route path='/matches/:country'  element={<Matches/>} />
       
       </Routes>
     </BrowserRouter>

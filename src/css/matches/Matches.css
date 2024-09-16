@@ -1,14 +1,17 @@
 .card-m{
      width:230px;
-     margin-bottom: 20px;
+     margin-bottom: 15px;
      text-align: center;
-     padding-bottom: 20px;
+     padding-bottom: 10px;
      background-color: aqua;
      font-weight: bold;
 }
 .card-p{
  display: flex;
  justify-content: space-around;
- padding-top:20px;
+ padding-top:10px;
  padding-bottom: 10px;
+}
+h4{
+     color:rgb(255 193 7)
 }

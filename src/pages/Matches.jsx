@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import withMainLayoutPage from "../layout/withMainLayoutPage";
 import '../css/matches/Matches.css'
 
 
 function Matches() {
+
+    const round = ['round of 16', 'Quarter-finals', 'Semi-finals', 'final']
 
     const flags = [
         { id: 1, imgPath: '/images/flag/germany.jpg' },
@@ -33,20 +36,27 @@ function Matches() {
             marginBottom: '20px'
         }
     }
+
+
+    const { country } = useParams();
     const [matches, setMatches] = useState([]);
     const [teams, setTeams] = useState([]);
+    const [teamId, setTeamId] = useState(null)
+
+    console.log(teamId)
+
 
 
     function TeamId(id) {
-          console.log(id)
+
         const team = teams.find(x => x.ID === id);
-        
+
         return team.Name;
     }
 
-    function getMatchesByTeamID(teamID) {
+    function getMatchesByTeamID(teamId) {
 
-        return matches.filter(match => match.ATeamID === teamID || match.BTeamID === teamID);
+        return matches.filter(match => match.ATeamID === teamId || match.BTeamID === teamId);
     }
 
     function getFlagById(teamId) {
@@ -56,6 +66,7 @@ function Matches() {
 
 
     useEffect(() => {
+
         fetch('/data/matches.csv')
             .then(response => response.text())
             .then(response => {
@@ -74,7 +85,7 @@ function Matches() {
 
                 setMatches(parsedData);
             });
-    }, []);
+    }, [country]);
 
     useEffect(() => {
         fetch('/data/teams.csv')
@@ -91,14 +102,14 @@ function Matches() {
                             return acc;
                         }, {});
                     });
-
-                 console.log(Teams)
+                const TeamId = Teams.find(x => x.Name.toLowerCase() === country.toLowerCase())
+                setTeamId(TeamId.ID)
                 setTeams(Teams);
 
             });
     }, []);
 
-    const matchesForTeam1 = getMatchesByTeamID('1');
+    const matchesForTeam1 = getMatchesByTeamID(teamId);
     const numberOfCards = matchesForTeam1.length;
 
     return (
@@ -107,11 +118,12 @@ function Matches() {
                 <div className="col-12" style={style.background} >
                     <div style={{ width: '90%', display: 'flex', flexDirection: 'column', color: 'white' }}>
 
-                        <h1 className="text-center mb-4">Group A </h1>
+                        <h4 className="text-center mb-3 text-warning ">Group </h4>
                         {numberOfCards >= 3 && (
-                            <div style={{ display: 'flex', justifyContent: 'space-around',
-                            flexDirection:window.innerWidth <=576 ? 'column':'row',
-                            alignItems:'center'
+                            <div style={{
+                                display: 'flex', justifyContent: 'space-around',
+                                flexDirection: window.innerWidth <= 576 ? 'column' : 'row',
+                                alignItems: 'center'
                             }}>
 
                                 {matchesForTeam1.slice(0, 3).map((match) => (
@@ -119,7 +131,7 @@ function Matches() {
                                         <div className="card-p">
 
                                             <p style={{ color: 'red' }}> {TeamId(match.ATeamID)}</p>
-                                            <p> {match.Score}</p>
+                                            <p className="text-dark"> {match.Score}</p>
                                             <p style={{ color: 'blue' }}> {TeamId(match.BTeamID)}</p>
                                         </div>
 
@@ -129,18 +141,22 @@ function Matches() {
                             </div>
                         )}
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <h1 className="text-center mb-4">Semi-Finals </h1>
+
                             {matchesForTeam1.slice(3).map((match, index) => (
-                                <div className=" col-lg-3 col-md-4 col-10 mb-3 card-m" style={{marginBottom:'40px'}} >
-                                    <div className="card-p" >
+                                <>
+                                    <h4>{round[index]}</h4>
+                                    <div className=" col-lg-3 col-md-4 col-10 mb-3 card-m" style={{ marginBottom: '40px' }} >
 
-                                        <p style={{ color: 'red' }}> {TeamId(match.ATeamID)}</p>
-                                       <p>  {match.Score}</p>
+                                        <div className="card-p" >
 
-                                       <p> {TeamId(match.BTeamID)}</p>
+                                            <p style={{ color: 'red' }}> {TeamId(match.ATeamID)}</p>
+                                            <p>  {match.Score}</p>
+
+                                            <p style={{ color: 'blue' }}> {TeamId(match.BTeamID)}</p>
+                                        </div>
+                                        <div>{match.Date}</div>
                                     </div>
-                                    <div>{match.Date}</div>
-                                </div>
+                                </>
                             ))}
                         </div>
 
