@@ -7,7 +7,7 @@ export default function SidebarPage() {
 
     const Menu_Link = [
         { link: '/', title: "Home" },
-        { link: '/players', title: "Players" },
+        { link: `/players/${country}`, title: "Players" },
         { link: `/matches/${country}`, title: "Matches" },
         { link: `/${country}`, title: "Back" },
     

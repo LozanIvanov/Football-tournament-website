@@ -43,9 +43,6 @@ function Matches() {
     const [teams, setTeams] = useState([]);
     const [teamId, setTeamId] = useState(null)
 
-    console.log(teamId)
-
-
 
     function TeamId(id) {
 
@@ -72,10 +69,11 @@ function Matches() {
             .then(response => {
                 const rows = response.trim().split('\n');
                 const headers = rows[0].split(',');
-
+                
                 const parsedData = rows.slice(1)
                     .map(row => row.split(',').map(field => field.trim()))
                     .map(x => {
+                       
                         return headers.reduce((acc, header, index) => {
                             acc[header.trim()] = x[index];
                             return acc;

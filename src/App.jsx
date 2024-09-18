@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path='/' exact element={<HomePage/>} />
         <Route path='/:country'  element={< CountryPage/> } />
-        <Route path='/players'  element={<Players/>} />
+        <Route path='/players/:country'  element={<Players/>} />
         <Route path='/matches/:country'  element={<Matches/>} />
       
       </Routes>

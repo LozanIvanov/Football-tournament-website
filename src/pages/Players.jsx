@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import withMainLayoutPage from "../layout/withMainLayoutPage";
 import Table from "../components/Table";
+import { useParams } from "react-router-dom";
 
 
 
@@ -13,18 +14,14 @@ function Players() {
             backgroundSize: 'cover ',
             backgroundRepeat: 'no-Repeat',
             height: '100%',
-    
+
         }
     }
-
+    const { country } = useParams()
     const [players, setPlayers] = useState([]);
     const [player, setPlayer] = useState([]);
-    const [teams, setTeams] = useState([]);
+    const [teams, setTeams] = useState(null);
 
-    function coach() {
-        const germany = teams.find(team => team.Name === 'Germany');
-        return germany ? germany.ManagerFullName : 'Manager not found';
-    }
 
     useEffect(() => {
 
@@ -43,53 +40,59 @@ function Players() {
                         acc[header] = row[index];
                         return acc;
                     }, {}));
-                console.log(teamData)
-                setTeams(teamData);
+
+
+
+                const selectedTeam = teamData.find(x => x.Name.toLowerCase() === country.toLowerCase());
+
+
+                setTeams(selectedTeam.ID);
             })
     },
-        []);
+        [country]);
 
     useEffect(() => {
         fetch('/data/players.csv')
-        .then(response =>
-            response.text()
-        )
-        .then(response => {
-            const rows = response.trim().split('\n');
-        
-            const headers = rows[0].split(',');
-        
-            const filterData = rows.slice(1)
-                .map(row => row.split(',').map(field => field.trim()))
-                .filter(row => row.length === headers.length && row[4] === '1')
-                .map(x => {
-                    return headers.reduce((acc, header, index) => {
-                        acc[header] = x[index];
-                        return acc;
-                    }, {})
-                });
-            let data = filterData.map(item => [
-                item.FullName, item.Position, item.TeamNumber]);
-            setPlayers(data)
-            setPlayer(filterData)
-        })
+            .then(response =>
+                response.text()
+            )
+            .then(response => {
+                const rows = response.trim().split('\n');
 
-    }, [])
+                const headers = rows[0].split(',');
+
+                const filterData = rows.slice(1)
+                    .map(row => row.split(',').map(field => field.trim()))
+                    .filter(row => row.length === headers.length && row[4] === teams)
+                    .map(x => {
+                        return headers.reduce((acc, header, index) => {
+                            acc[header] = x[index];
+                            return acc;
+                        }, {})
+                    });
+
+                let data = filterData.map(item => [
+                    item.FullName, item.Position, item.TeamNumber]);
+                setPlayers(data)
+                setPlayer(filterData)
+            })
+
+    }, [teams])
 
 
     return (
         <>
             <div className="row" style={{ display: 'flex', boxSizing: 'border-box', height: '100%' }}>
-    
+
                 <div className="col-lg-12 col-md-10 col-12  mx-auto" style={style.background} >
-                   <div style={{width:'90%', display:'flex',justifyContent:'center',textAlign:'center',fontSize:'10px' }}>
-                   <Table columns={["Full Name","Position","Team Number"]}
-                   values={players}
-                   />
-                   </div>
-                    
+                    <div style={{ width: '90%', display: 'flex', justifyContent: 'center', textAlign: 'center', fontSize: '10px' }}>
+                        <Table columns={["Full Name", "Position", "Team Number"]}
+                            values={players}
+                        />
+                    </div>
+
                 </div>
-            
+
             </div>
         </>
     )
