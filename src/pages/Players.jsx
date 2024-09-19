@@ -9,11 +9,24 @@ function Players() {
 
     const style = {
         background: {
+            display:'flex',
+            justifyContent:'center',
+            alignItems:'center',
             background: "url('/images/header/stadium4.jpg')",
             backgroundPosition: 'center center',
             backgroundSize: 'cover ',
             backgroundRepeat: 'no-Repeat',
             height: '100%',
+
+        },
+        tableWrap:{
+            marginTop:'40px',
+            background:'white',
+            width:'70%',
+            maxHeight:'100%',
+            overflowY:'auto',
+            textAlign:'center',
+            fontSize:'10px',
 
         }
     }
@@ -81,7 +94,7 @@ function Players() {
             <div className="row" style={{ display: 'flex', boxSizing: 'border-box', height: '100%' }}>
 
                 <div className="col-lg-12 col-md-10 col-12  mx-auto" style={style.background} >
-                    <div style={{ width: '90%', display: 'flex', justifyContent: 'center', textAlign: 'center', fontSize: '10px' }}>
+                    <div style={style.tableWrap }>
                         <Table columns={["Full Name", "Position", "Team Number"]}
                             values={players}
                         />

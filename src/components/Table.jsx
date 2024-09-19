@@ -14,11 +14,12 @@ export default function Table({ columns = [], values = [] }) {
     return (
         <>
             <div className="row">
-                <div className="col-12 mb-3">
-                    <label className="fw-bold">Search</label>
+                <div className="col-12 mb-3 p-4">
+                    
+                    <label className="fw-bold text-start fs-5 w-100">Search</label>
                     <input
                         type="text"
-                        className="form-control"
+                        className="form-control "
                         placeholder="Search..."
                         value={search}
                         onChange={e => setSearch(e.target.value)}
@@ -26,7 +27,7 @@ export default function Table({ columns = [], values = [] }) {
                 </div>
                 <div className="col-12">
                     <table className="table table-bordered">
-                        <thead>
+                        <thead className="fs-6">
                             <tr>
                                 {columns.map((c, index) => <th key={index}>{c}</th>)}
                             </tr>

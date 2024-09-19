@@ -6,7 +6,7 @@ import '../css/matches/Matches.css'
 
 function Matches() {
 
-    const round = ['round of 16', 'Quarter-finals', 'Semi-finals', 'final']
+    const round = ['Round of 16', 'Quarter-finals', 'Semi-finals', 'final']
 
     const flags = [
         { id: 1, imgPath: '/images/flag/germany.jpg' },
