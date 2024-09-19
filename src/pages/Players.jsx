@@ -41,11 +41,7 @@ function Players() {
                         return acc;
                     }, {}));
 
-
-
                 const selectedTeam = teamData.find(x => x.Name.toLowerCase() === country.toLowerCase());
-
-
                 setTeams(selectedTeam.ID);
             })
     },
