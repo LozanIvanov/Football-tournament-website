@@ -148,7 +148,7 @@ function Matches() {
                                         <div className="card-p" >
 
                                             <p style={{ color: 'red' }}> {TeamId(match.ATeamID)}</p>
-                                            <p>  {match.Score}</p>
+                                            <p  className="text-dark">  {match.Score}</p>
 
                                             <p style={{ color: 'blue' }}> {TeamId(match.BTeamID)}</p>
                                         </div>
