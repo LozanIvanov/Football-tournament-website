@@ -2,8 +2,18 @@ import React, { useEffect, useState } from "react";
 import withMainLayoutPage from "../layout/withMainLayoutPage";
 import Card from "../components/Card";
 import { useParams } from "react-router-dom";
+import "../css/flag/flag.css"
 
-
+const flagUrl = {
+    germany: "/images/flag/german.jpg",
+    denmark: "/images/flag/denmark.jpg",
+    england: "/images/flag/england.jpg",
+    hungary: "/images/flag/hungary.jpg",
+    switzerland: "/images/flag/switz.jpg",
+    serbia: "/images/flag/serbia.jpg",
+    poland: "/images/flag/poland.jpg",
+    spain: "/images/flag/spain.jpg",
+}
 
 function CountryPage() {
 
@@ -26,8 +36,9 @@ function CountryPage() {
     const [teams, setTeams] = useState([]);
     const [mainTeam, setMainTeam] = useState([]);
     const [reserves, setReserves] = useState([]);
+    const [flag, setFlag] = useState("");
 
-    console.log(reserves)
+
 
 
     function getCountryTeam() {
@@ -60,6 +71,8 @@ function CountryPage() {
 
                 setTeamID(selectedTeam.ID);
                 setTeamData(selectedTeam);
+                setFlag(flagUrl[country]);
+
             })
     },
         [country]);
@@ -90,18 +103,37 @@ function CountryPage() {
                 const df = filterData.filter(x => x.Position === 'DF').slice(0, 4);
                 const mf = filterData.filter(x => x.Position === 'MF').slice(0, 3);
                 const fw = filterData.filter(x => x.Position === 'FW').slice(0, 3);
-        
+
                 setMainTeam([...gk, ...df, ...mf, ...fw]);
 
-                const mainteam=[...gk, ...df, ...mf, ...fw];
+                const mainteam = [...gk, ...df, ...mf, ...fw];
 
-                const reserves=filterData.filter(x=>!mainteam.includes(x))
+                const reserves = filterData.filter(x => !mainteam.includes(x))
                 setReserves(reserves)
-           
-                setPlayer(filterData)        
+
+                setPlayer(filterData)
+
 
             })
     }, [teamId])
+
+
+    useEffect(() => {
+        const flagContainer = document.querySelector(".flag");
+        const flagWidth = flagContainer.clientWidth;
+        const stripWidth = 3;
+        while (flagContainer.firstChild) {
+            flagContainer.removeChild(flagContainer.firstChild);
+        }
+        for (let i = 0; i < Math.ceil(flagWidth / stripWidth); i++) {
+            const strip = document.createElement("div");
+            strip.className = "flag-strip";
+            strip.style.backgroundImage = `url(${flag})`
+            strip.style.backgroundPosition = `-${i * stripWidth}px 0`;
+            strip.style.animationDelay = `${i * 15}ms`;
+            flagContainer.appendChild(strip);
+        }
+    }, [flag]);
 
     function playerTitle(mainTeam) {
 
@@ -121,42 +153,52 @@ function CountryPage() {
 
             <div className="row" style={{ position: "relative", display: 'flex', boxSizing: 'border-box', height: '100%' }}>
                 <div className="col-lg-7 col-md-6 col-12 mb-4 " style={style.background} >
+                    <div className="flag-container" >
+                        <div className="flag"  >
+                            <a href="" className="flag-text" ></a>
+                        </div>
+
+                    </div>
+                    <div className="name">
+                        {country}
+                    </div>
+
 
                     <div className="pitch" style={{ position: "relative", width: '100%', height: '100%', fontSize: '10px' }} >
 
-                        <div style={{ position: "absolute", top: "5%", left: "45%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "-10%", left: "43%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[0])} position={playerPosition(mainTeam[0])} bgColor={"bg-warning"} />
                         </div>
 
-                        <div style={{ position: "absolute", top: "10%", left: "20%", width: '100%', fontSize: '9px' }}>
+                        <div style={{ position: "absolute", top: "-4%", left: "20%", width: '100%', fontSize: '9px' }}>
                             <Card title={playerTitle(mainTeam[1])} position={playerPosition(mainTeam[1])} />
                         </div>
 
-                        <div style={{ position: "absolute", top: "10%", left: "68%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "-4%", left: "68%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[2])} position={playerPosition(mainTeam[2])} />
                         </div>
-                        <div style={{ position: "absolute", top: "25%", left: "55%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "10%", left: "55%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[3])} position={playerPosition(mainTeam[3])} />
                         </div>
-                        <div style={{ position: "absolute", top: "25%", left: "35%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "10%", left: "35%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[4])} position={playerPosition(mainTeam[4])} />
                         </div>
-                        <div style={{ position: "absolute", top: "40%", left: "15%", width: '100%', fontSize: '9px' }}>
+                        <div style={{ position: "absolute", top: "25%", left: "15%", width: '100%', fontSize: '9px' }}>
                             <Card title={playerTitle(mainTeam[5])} position={playerPosition(mainTeam[5])} bgColor={"bg-success"} />
                         </div>
-                        <div style={{ position: "absolute", top: "40%", left: "45%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "25%", left: "45%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[6])} position={playerPosition(mainTeam[6])} bgColor={"bg-success"} />
                         </div>
-                        <div style={{ position: "absolute", top: "40%", left: "73%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "25%", left: "73%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[7])} position={playerPosition(mainTeam[7])} bgColor={"bg-success"} />
                         </div>
-                        <div style={{ position: "absolute", top: "60%", left: "45%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "40%", left: "45%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[8])} position={playerPosition(mainTeam[8])} bgColor={"bg-danger"} />
                         </div>
-                        <div style={{ position: "absolute", top: "65%", left: "20%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "55%", left: "20%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[9])} position={playerPosition(mainTeam[9])} bgColor={"bg-danger"} />
                         </div>
-                        <div style={{ position: "absolute", top: "65%", left: "75%", width: '100%' }}>
+                        <div style={{ position: "absolute", top: "55%", left: "70%", width: '100%' }}>
                             <Card title={playerTitle(mainTeam[10])} position={playerPosition(mainTeam[10])} bgColor={"bg-danger"} />
                         </div>
                     </div>

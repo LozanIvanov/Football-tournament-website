@@ -11,7 +11,7 @@ export default function Sidebar() {
         { link: '/poland', title: "Poland" },
         { link: '/denmark', title: "Denmark" },
         { link: '/serbia', title: "Serbia" },
-        { link: '/norway', title: "Norway" },
+        { link: '/switzerland', title: "Switzerland" },
     ]
 
     return (
