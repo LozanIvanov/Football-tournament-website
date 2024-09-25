@@ -1,10 +1,72 @@
-.navbar-text{
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.header-title {
+    width: 100%;
+    text-align: center;
+}
+
+.humberger-container {
+    display: none;
+}
+.sidebar-container.visible{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.navbar-text {
 
     background-image: url('images/header/header3.jpg');
     background-clip: text;
     -webkit-background-clip: text;
-    color:transparent;
+    color: transparent;
     background-size: cover;
     background-position: bottom;
     letter-spacing: 6px;
+    width: 90%
+}
+
+.navbar-toggler {
+    width: 10%;
+    text-align: center;
+}
+
+@media(max-width: 992px) {
+    .humberger-container {
+        display: block;
+    }
+
+    .sidebar-container {
+        display: none;
+    }
+
+    .sidebar-container.visible {
+        display: block;
+        position: absolute;
+        width: 250px;
+        padding: 0;
+
+    
+    }
+}
+
+@media(min-width: 992px) {
+    .header-title {
+        text-align: center;
+    }
+
+    .sidebar-container {
+        display: block;
+        position: relative;
+        width: 250px;
+        height: 100vh;
+    }
+    
+
 }

@@ -84,6 +84,7 @@ function Players() {
                     item.FullName, item.Position, item.TeamNumber]);
                 setPlayers(data)
                 setPlayer(filterData)
+                console.log(filterData)
             })
 
     }, [teams])

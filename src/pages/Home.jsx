@@ -5,12 +5,13 @@ import Table from "../components/Table";
 const style={
     background:{
          backgroundImage: "url('/images/staduim/3.jpg')",
-         height: '100vh',
-         backgroundSize:'cover',
+         height: '90vh',
          backgroundPosition:'center',
+         backgroundRepeat:'no-repeat',
+         backgroundSize:'cover',
          objectFit:'cover',
          
-
+         
     }
 }
 

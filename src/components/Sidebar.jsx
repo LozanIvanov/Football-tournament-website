@@ -16,9 +16,10 @@ export default function Sidebar() {
 
     return (
         <>
-            <div className="bg-dark d-flex justify-content-center align-items-start" style={{ height: "100vh" }}>
+            <div className="bg-dark d-flex  align-items-start"
+             style={{ height: "100vh",display:"flex",justifyContent: window.innerWidth>=992 ? 'center' : 'start',width:'100%'  }}>
                 <div className="position-sticky">
-                    <ul className="nav flex-column text-center">
+                    <ul className="nav flex-column " >
 
                         {Menu_Link.map(i =>
                             <li className="nav-item  fs-5 text-start" key={i.link} style={{ textAlign: "center" }}>

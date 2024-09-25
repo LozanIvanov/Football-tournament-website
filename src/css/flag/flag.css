@@ -28,7 +28,6 @@
   .flag-strip {
     width: 3px;
     height: 100%;
-   /* background: url('../../../public/images/flag/german.jpg'); */
     background-size: 150px 100%;
     animation: wave 4s ease-in-out infinite;
   }

@@ -6,7 +6,7 @@ import '../css/matches/Matches.css'
 
 function Matches() {
 
-    const round = ['Round of 16', 'Quarter-finals', 'Semi-finals', 'final']
+    const round = ['Round of 16', 'Quarter-finals', 'Semi-final', 'Final']
 
     const flags = [
         { id: 1, imgPath: '/images/flag/germany.jpg' },
@@ -25,15 +25,16 @@ function Matches() {
             height: '100%',
         },
         firstRow: {
-            display: 'flex',
-            justifyContent: 'space-bettwen',
-            marginBottom: '20px'
+            display: 'flex', 
+            justifyContent: 'space-around',
+            flexDirection: window.innerWidth <= 576 ? 'column' : 'row',
+            alignItems: 'center'
 
         },
         singleCardRow: {
-            display: 'flex',
-            justifyContent: 'center',
-            marginBottom: '20px'
+            display: 'flex', 
+            flexDirection: 'column',
+             alignItems: 'center'
         }
     }
 
@@ -118,11 +119,7 @@ function Matches() {
 
                         <h4 className="text-center mb-3 text-warning ">Group </h4>
                         {numberOfCards >= 3 && (
-                            <div style={{
-                                display: 'flex', justifyContent: 'space-around',
-                                flexDirection: window.innerWidth <= 576 ? 'column' : 'row',
-                                alignItems: 'center'
-                            }}>
+                            <div style={style.firstRow}>
 
                                 {matchesForTeam1.slice(0, 3).map((match) => (
                                     <div className=" col-lg-3 col-md-4 col-10 mb-3 card-m"  >
@@ -138,7 +135,7 @@ function Matches() {
                                 ))}
                             </div>
                         )}
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div style={style.singleCardRow}>
 
                             {matchesForTeam1.slice(3).map((match, index) => (
                                 <>
