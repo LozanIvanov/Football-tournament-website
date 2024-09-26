@@ -49,7 +49,7 @@ export default function withMainLayout(Component) {
                             <Sidebar />
                         </div>
 
-                        <div className={`col-12 col-lg-9 p-0 w-100`}
+                        <div className="col-lg-9 p-0 w-100"
                         style={{ height: contentHeight, overflow: 'hidden'}} >
                             <Component {...props} />
                         </div>

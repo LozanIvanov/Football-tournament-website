@@ -22,7 +22,7 @@ function Matches() {
             backgroundPosition: 'center center',
             backgroundSize: 'cover ',
             backgroundRepeat: 'no-Repeat',
-            height: '100%',
+            minHeight: '100%',
         },
         firstRow: {
             display: 'flex', 

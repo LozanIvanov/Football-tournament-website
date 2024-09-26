@@ -25,8 +25,7 @@ function CountryPage() {
             backgroundSize: 'cover ',
             backgroundRepeat: 'no-Repeat',
             height: '100%',
-
-
+            
         }
     }
     const { country } = useParams();
@@ -151,8 +150,9 @@ function CountryPage() {
     return (
         <>
 
-            <div className="row" style={{ position: "relative", display: 'flex', boxSizing: 'border-box', height: '100%' }}>
-                <div className="col-lg-7 col-md-6 col-12 mb-4 " style={style.background} >
+            <div className="row " style={{ position: "relative", display: 'flex', height:'100%' }}>
+                
+                <div className="col-lg-7 col-md-6 col-12  " style={style.background} >
                     <div className="flag-container" >
                         <div className="flag"  >
                             <a href="" className="flag-text" ></a>
@@ -204,16 +204,16 @@ function CountryPage() {
                     </div>
 
                 </div>
-                <div className="col-lg-5 col-md-6 col-12">
+                <div className="col-lg-5 col-md-6 col-12 p-0 ">
                     <div style={{
-                        marginLeft: '-12px', width: '100%', height: '100%', fontSize: '30px', background: 'red', fontSize: '50px',
+                         width: '100%', height: '100%', fontSize: '30px', background: 'red', fontSize: '50px',
                         fontWeight: 'bold'
                     }}>
                         <div style={{ fontSize: '50px', textAlign: "center", padding: '20px' }}>
                             {country.toUpperCase()} COACH
                         </div>
-                        <div>
-                            <img src="./images/coach.webp" />
+                        <div >
+                            <img src="./images/coach.webp" className="w-100" />
                         </div>
                         <div style={{ textAlign: "center" }}>
                             {getCountryTeam()}

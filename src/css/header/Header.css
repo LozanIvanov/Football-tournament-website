@@ -12,6 +12,14 @@ html, body {
 .humberger-container {
     display: none;
 }
+.sidebar-container{
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    z-index: 1000;
+}
 .sidebar-container.visible{
     display: block;
     position: fixed;
@@ -40,7 +48,9 @@ html, body {
 @media(max-width: 992px) {
     .humberger-container {
         display: block;
+        
     }
+
 
     .sidebar-container {
         display: none;
@@ -51,8 +61,8 @@ html, body {
         position: absolute;
         width: 250px;
         padding: 0;
+        
 
-    
     }
 }
 
