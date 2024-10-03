@@ -6,7 +6,8 @@ export default function withMainLayoutPage(WrappedComponent) {
 
     function layoutWrapper(props) {
         const [contentHeight, setContentHeight] = useState('100vh');
-        const [isSideBarVisible, setIsSideBarVisible] = useState(false)
+        const [isSideBarVisible, setIsSideBarVisible] = useState(false);
+        const [visible,setVisible]=useState(false);
         const headerRef = useRef(null);
 
         useEffect(() => {
@@ -43,7 +44,7 @@ export default function withMainLayoutPage(WrappedComponent) {
                     </div>
                     <div className="row m-0 p-0" style={{ height: contentHeight }}
                     > 
-                            <div className={`col-lg-2  p-0 sidebar-container ${isSideBarVisible ? 'visible':''} `}
+                            <div className={`col-lg-2  p-0 sidebar-container ${isSideBarVisible ? 'visible':''}`}
                                 style={{
                                     position:'fixed',
                                     width:isSideBarVisible ? '250px' : '0',
